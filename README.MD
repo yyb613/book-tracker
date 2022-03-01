@@ -19,15 +19,15 @@ Example:
 MVP Social Media Website Clone
 
 Users
-Users should be able to sign up/create a profile
-Users should be able to login and have a personalized experience with your website
-Users should be able to update their profile
-Users should be able to see Posts that they have created and linked to them
+1. Users should be able to sign up/create a profile
+2. Users should be able to login and have a personalized experience with your website
+3. Users should be able to update their profile
+4. Users should be able to see Posts that they have created and linked to them
 
 Posts
-Logged in user should be able to write a Post
-Users should be able to view another User's Post
-Posts belong to a User and the Post table should have a Foriegn Key to associate the User that created the Post 
+1. Logged in user should be able to write a Post
+2. Users should be able to view another User's Post
+3. Posts belong to a User and the Post table should have a Foriegn Key to associate the User that created the Post 
 
 ## Tips
 
