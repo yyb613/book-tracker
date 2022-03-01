@@ -1,19 +1,18 @@
 const express = require('express');
-const { sequelize } = require('./models');
-const db = require('./models');
-const hbs =  require('express-handlebars');
+const session = require('express-session');
+const exphbs =  require('express-handlebars');
+const routes = require('./controllers');
+const sequelize = require('./config/connection');
+const app = express();
 const PORT = process.env.PORT || 3001;
 
-const app = express();
-
-app.engine('handlebars', hbs.engine());
+app.engine('handlebars', exphbs.engine());
 app.set('view engine', 'handlebars');
 
 app.use(express.static('public'));
-
-app.get('/', function(req, res){
-    res.send("Homepage!");
-});
+//Setup routes to the Server
+//Look at /controllers folder
+app.use('/', routes);
 
 sequelize.sync({force:true}).then(()=>{
     app.listen(PORT, () => {
