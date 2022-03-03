@@ -22,3 +22,8 @@ aside {
 .text-muted {
     text-align: center;
 }
+
+/* Plus Icon */
+.fa-plus-circle {
+    color: green;
+}
