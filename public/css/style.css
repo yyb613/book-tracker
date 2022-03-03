@@ -1,3 +1,9 @@
+/* My Library Sidebar */
+aside {
+    float: left;
+}
+
+/* My Library Sidebar Nav */
 .activeNav {
     color: #fff;
     background-color: #007bff;
@@ -5,4 +11,14 @@
 
 .activeNav:hover {
     color: #fff;
+}
+
+/* Card Deck */
+.card-deck {
+    margin-top: 0;
+}
+
+/* Add to My Library button */
+.text-muted {
+    text-align: center;
 }
