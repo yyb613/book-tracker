@@ -1,3 +1,14 @@
+/* Tae */
+
+.bg-light {
+    background-color: #B59C89!important;
+}
+
+.btn-outline-success {
+    color: #354f39;
+    border-color: #000000;
+}
+
 .activeNav {
     color: #fff;
     background-color: #007bff;
