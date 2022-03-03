@@ -3,6 +3,12 @@ CREATE DATABASE my_library_db;
 
 USE DATABASE my_library_db;
 
+CREATE TABLE `Users` (
+    `ID` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    `username` VARCHAR(50)  NOT NULL ,
+    `password` VARCHAR(50)  NOT NULL ,
+);
+
 CREATE TABLE `AddedBook` (
     `ID` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `title` VARCHAR(50)  NOT NULL ,
