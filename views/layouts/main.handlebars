@@ -58,5 +58,15 @@
     {{{body}}}
 </body>
 
+<script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"
+  integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
+
+<script>$(document).ready(function () {
+    $(".nav-link").click(function (e) {
+      $(".nav-link").removeClass("activeNav");
+      $(this).addClass("activeNav");
+    });
+  });</script>
+
 <script src="/public/js/index.js"></script>
 </html>
