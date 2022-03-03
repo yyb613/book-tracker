@@ -18,9 +18,15 @@ aside {
     margin-top: 0!important;
 }
 
+/* Card Cursor on Drag */
+.card {
+    cursor: pointer;
+}
+
 /* Add to My Library button */
 .text-muted {
     text-align: center;
+    color: black!important;
 }
 
 /* Plus Icon */
