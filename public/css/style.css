@@ -18,15 +18,20 @@ aside {
     margin-top: 0!important;
 }
 
-/* Card Cursor on Drag */
+/* Card */
 .card {
     cursor: pointer;
 }
 
-/* Add to My Library button */
+/* Card Body */
+.card-body {
+    padding-left: 48px;
+}
+
+/* Drag Button */
 .text-muted {
     text-align: center;
-    color: black!important;
+    color: green!important;
 }
 
 /* Plus Icon */
