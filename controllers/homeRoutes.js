@@ -1,26 +1,92 @@
 const router = require('express').Router();
 const db = require('../config/connection.js');
 
+// Homepage
 router.get('/', async (req, res) => {
   // Send the rendered Handlebars.js template back as the response
   res.render('homepage');
 });
 
+// My Library
 router.get('/my_library', async (req, res) => {
   // Send the rendered Handlebars.js template back as the response
   res.render('my_library');
 });
 
-router.get('/getBooks', async (req, res) => {
-  // Display added books
+// Added Books
+router.get('/AddedBook', async (req, res) => {
   const sqlString = `
     SELECT coverURL, title, author, numPages
     FROM AddedBook`
 
   db.query(sqlString, (err, data) => {
     if (err) throw err; // error handling
-    res.render('my_library', {books:data});
-    console.log(data);
+    res.render('my_library', {books:data}); // render page
+  });
+});
+
+// Already Read Books
+router.get('/AlreadyRead', async (req, res) => {
+  const sqlString = `
+    SELECT coverURL, title, author, numPages
+    FROM AlreadyRead`
+
+  db.query(sqlString, (err, data) => {
+    if (err) throw err; // error handling
+    res.render('my_library', {books:data}); // render page
+  });
+});
+
+// Currently Reading Books
+router.get('/CurrentlyReading', async (req, res) => {
+  const sqlString = `
+    SELECT coverURL, title, author, numPages
+    FROM CurrentlyReading`
+
+  db.query(sqlString, (err, data) => {
+    if (err) throw err; // error handling
+    res.render('my_library', {books:data}); // render page
+  });
+});
+
+// Want to Read Books
+router.get('/WantToRead', async (req, res) => {
+  const sqlString = `
+    SELECT coverURL, title, author, numPages
+    FROM WantToRead`
+
+  db.query(sqlString, (err, data) => {
+    if (err) throw err; // error handling
+    res.render('my_library', { books: data }); // render page
+  });
+});
+
+// Drag to Already Read
+router.post('/AlreadyReadDragged', async (req, res) => {
+  const coverURL = req.body.coverURL;
+  const title = req.body.title;
+  const author = req.body.author;
+  const numPages = req.body.numPages;
+  const origin = req.body.origin;
+  const destination = req.body.destination;
+
+  const sqlString1 = `
+    DELETE FROM ${origin}
+    WHERE (coverURL = "${coverURL}" AND ID <> 0);
+    INSERT INTO ${destination} (coverURL, title, author, numPages)
+    VALUES ("${coverURL}", "${title}", "${author}", "${numPages}");`
+
+  const sqlString2 = `
+    SELECT coverURL, title, author, numPages
+    FROM ${origin};`
+
+  db.query(sqlString1, (err, data) => {
+    if (err) throw err; // error handling
+  });
+
+  db.query(sqlString2, (err, data) => {
+    if (err) throw err; // error handling
+    res.render('my_library', { books: data }); // refresh page
   });
 });
 

@@ -6,18 +6,44 @@ $(document).ready(function () {
     });
 });
 
-// Drag and Drop
+/* Drag and Drop */
+// Allow Drop
 function allowDrop(event) {
-    event.preventDefault();
+   event.preventDefault(); // Prevent Default
 }
 
+// Drag
 function drag(event) {
-    event.dataTransfer.setData("text", event.target.id);
-    console.log(event.target);
+    const cardObj = { // Object with card contents
+        coverURL: event.target.querySelector('.card-img-top').src,  // Image
+        title: event.target.querySelector('.card-title').innerHTML, // Title
+        author: event.target.querySelector('#author').innerHTML,  // Author
+        numPages: event.target.querySelector('#pages').innerHTML, // Pages
+        origin: window.location.pathname.slice(1) // MySQl table origin
+    }
+    event.dataTransfer.setData("text", JSON.stringify(cardObj)); // Transfer object
 }
 
+// Drop to Already Read
 function drop(event) {
-    event.preventDefault();
-    var data = event.dataTransfer.getData("text");
-    event.target.appendChild(document.getElementById(data));
+    event.preventDefault(); // Prevent Default
+    var data = event.dataTransfer.getData("text"); // Receive data
+    cardObj = JSON.parse(data); // Parse data
+    cardObj.destination = 'AlreadyRead'; // Add destination table
+
+    // console.log(cardObj);
+    
+    fetch('http://localhost:3001/AlreadyReadDragged', {
+        method: 'POST', 
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(cardObj)
+    })
+        .then(function (response) {
+        // console.log(response);
+        })
+        // .then(function (data) {
+            
+        // });
 }
