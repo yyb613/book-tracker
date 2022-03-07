@@ -1,23 +1,22 @@
-<<<<<<< HEAD
+/* <<<<<<< HEAD */
 /* Tae */
 
 .bg-light {
-    background-color: #B59C89!important;
+    background-color: #354f39!important;
 }
 
 .btn-outline-success {
-    color: #354f39;
+    color: #B59C89;
     border-color: #000000;
 }
 
-=======
 /* My Library Sidebar */
 aside {
     float: left;
 }
 
 /* My Library Sidebar Nav */
->>>>>>> eb996ac6d0b64414315b6f10fc5c92885f5b4eb7
+/* >>>>>>> eb996ac6d0b64414315b6f10fc5c92885f5b4eb7 */
 .activeNav {
     color: #fff;
     background-color: #007bff;
