@@ -13,8 +13,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use(express.static('public'));
-// Lets me add images
-app.use(express.static('/public/assets'));
 // Setup routes to the Server
 // Look at /controllers folder
 app.use('/', routes);
