@@ -1,11 +1,92 @@
 <br>
+
+{{!-- sidebar nav --}}
 <aside>
   <div class="card" style="width: 18rem; text-align: center;">
     <nav class="nav flex-column">
-      <a class="nav-link" href="#">Added Books</a>
-      <a class="nav-link" href="#">Already Read</a>
-      <a class="nav-link" href="#">Currently Reading</a>
-      <a class="nav-link" href="#">Want to Read</a>
+      <a class="nav-link" href="/getBooks">Added Books</a>
+      <a class="nav-link" href="#" ondrop="drop(event)" ondragover="allowDrop(event)">Already Read</a>
+      <a class="nav-link" href="#" ondrop="drop(event)" ondragover="allowDrop(event)">Currently Reading</a>
+      <a class="nav-link" href="#" ondrop="drop(event)" ondragover="allowDrop(event)">Want to Read</a>
     </nav>
   </div>
 </aside>
+
+{{!-- cards --}}
+<div class="container-fluid mt-4">
+  <div class="row justify-content-center" id="row">
+    {{#each books}}
+    <div class="col-auto mb-3">
+      <div class="card" style="width: 18rem;" draggable="true" ondragstart="drag(event)">
+        <img src="https://pictures.abebooks.com/isbn/9780671723651-us.jpg" width="300" height="300" class="card-img-top"
+          alt="cover">
+        <div class="card-body">
+          <h5 class="card-title">How to Win Friends &amp; Influence People</h5>
+          <p class="card-text author">by Dale Carnegie</p> {{author}}
+          <p class="card-text pages">291 pages</p>
+        </div>
+        <div class="card-footer">
+          <div class="text-muted"><i class="fas fa-plus-circle"></i> Drag</div>
+        </div>
+      </div>
+    </div>
+    {{/each}}
+
+    <div class="col-auto mb-3">
+      <div class="card" style="width: 18rem;" draggable="true" ondragstart="drag(event)">
+        <img src="https://pictures.abebooks.com/isbn/9780671723651-us.jpg" width="300" height="300" class="card-img-top"
+          alt="cover">
+        <div class="card-body">
+          <h5 class="card-title">How to Win Friends &amp; Influence People</h5>
+          <p class="card-text author">by Dale Carnegie</p>
+          <p class="card-text pages">291 pages</p>
+        </div>
+        <div class="card-footer">
+          <div class="text-muted"><i class="fas fa-plus-circle"></i> Drag</div>
+        </div>
+      </div>
+    </div>
+    <div class="col-auto mb-3">
+      <div class="card" style="width: 18rem;" draggable="true" ondragstart="drag(event)">
+        <img src="https://pictures.abebooks.com/isbn/9780671723651-us.jpg" width="300" height="300" class="card-img-top"
+          alt="cover">
+        <div class="card-body">
+          <h5 class="card-title">How to Win Friends &amp; Influence People</h5>
+          <p class="card-text author">by Dale Carnegie</p>
+          <p class="card-text pages">291 pages</p>
+        </div>
+        <div class="card-footer">
+          <div class="text-muted"><i class="fas fa-plus-circle"></i> Drag</div>
+        </div>
+      </div>
+    </div>
+    <div class="col-auto mb-3">
+      <div class="card" style="width: 18rem;" draggable="true" ondragstart="drag(event)">
+        <img src="https://pictures.abebooks.com/isbn/9780671723651-us.jpg" width="300" height="300" class="card-img-top"
+          alt="cover">
+        <div class="card-body">
+          <h5 class="card-title">How to Win Friends &amp; Influence People</h5>
+          <p class="card-text author">by Dale Carnegie</p>
+          <p class="card-text pages">291 pages</p>
+        </div>
+        <div class="card-footer">
+          <div class="text-muted"><i class="fas fa-plus-circle"></i> Drag</div>
+        </div>
+      </div>
+    </div>
+    <div class="col-auto mb-3">
+      <div class="card" style="width: 18rem;" draggable="true" ondragstart="drag(event)">
+        <img src="https://pictures.abebooks.com/isbn/9780671723651-us.jpg" width="300" height="300" class="card-img-top"
+          alt="cover">
+        <div class="card-body">
+          <h5 class="card-title">How to Win Friends &amp; Influence People</h5>
+          <p class="card-text author">by Dale Carnegie</p>
+          <p class="card-text pages">291 pages</p>
+        </div>
+        <div class="card-footer">
+          <div class="text-muted"><i class="fas fa-plus-circle"></i> Drag</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

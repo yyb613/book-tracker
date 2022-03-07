@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* Tae */
 
 .bg-light {
@@ -9,6 +10,14 @@
     border-color: #000000;
 }
 
+=======
+/* My Library Sidebar */
+aside {
+    float: left;
+}
+
+/* My Library Sidebar Nav */
+>>>>>>> eb996ac6d0b64414315b6f10fc5c92885f5b4eb7
 .activeNav {
     color: #fff;
     background-color: #007bff;
@@ -16,4 +25,30 @@
 
 .activeNav:hover {
     color: #fff;
+}
+
+/* Card Container Margin */
+.mt-4 {
+    margin-top: 0!important;
+}
+
+/* Card */
+.card {
+    cursor: pointer;
+}
+
+/* Card Body */
+.card-body {
+    padding-left: 48px;
+}
+
+/* Drag Button */
+.text-muted {
+    text-align: center;
+    color: green!important;
+}
+
+/* Plus Icon */
+.fa-plus-circle {
+    color: green;
 }
