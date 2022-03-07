@@ -79,9 +79,11 @@ router.post('/AlreadyReadDragged', async (req, res) => {
   const sqlString2 = `
     SELECT coverURL, title, author, numPages
     FROM ${origin};`
-
+console.log(sqlString1)
+console.log(sqlString2)
   db.query(sqlString1, (err, data) => {
     if (err) throw err; // error handling
+
   });
 
   db.query(sqlString2, (err, data) => {
