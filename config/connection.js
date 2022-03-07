@@ -21,17 +21,22 @@ require('dotenv').config();
 // module.exports = sequelize;
 
 // Connect to database
+let connection;
+
+if (process.env.JAWSDB_URL) {
+  connection = mysql.createConnection(process.env.JAWSDB_URL);
+} else {
 const mysql = require("mysql2"); // mysql2
-const db = mysql.createConnection({
+connection = mysql.createConnection({
   host: "localhost", // Host
   user: process.env.DB_USER, // Username
   password: process.env.DB_PASSWORD, // Password
   database: process.env.DB_DATABASE, // Database
 });
 
-db.connect(function (err) {
+connection.connect(function (err) {
   if (err) throw err; // error handling
 });
-
-module.exports = db;
+}
+module.exports = connection;
 
