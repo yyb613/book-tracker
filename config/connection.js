@@ -38,5 +38,5 @@ connection.connect(function (err) {
   if (err) throw err; // error handling
 });
 }
-module.exports = connection;
 
+module.exports = connection;
