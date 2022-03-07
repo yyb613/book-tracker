@@ -19,6 +19,9 @@ app.use(express.static('/public/assets'));
 // Look at /controllers folder
 app.use('/', routes);
 
+// Lets me add images
+app.use(express.static('/public/assets')); 
+
 // sequelize.sync({force:true}).then(()=>{
     app.listen(PORT, () => {
         console.log(`Server is listening at http://localhost:${PORT}`)

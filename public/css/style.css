@@ -1,12 +1,39 @@
+/* <<<<<<< HEAD */
+/* Tae */
+.navbar {
+    font-family: Minion Variable Concept
+}
+
+.card-body {
+    font-family: Minion Variable Concept
+}
+
+.bg-light {
+    background-color: #354f39!important;
+}
+
+.btn-outline-success {
+    color: #B59C89;
+    border-color: #000000;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #B59C89;
+    border-color: #B59C89;
+}
+
 /* My Library Sidebar */
 aside {
     float: left;
 }
 
 /* My Library Sidebar Nav */
+/* >>>>>>> eb996ac6d0b64414315b6f10fc5c92885f5b4eb7 */
 .activeNav {
+    border-radius: 6px;
     color: #fff;
-    background-color: #007bff;
+    background-color: #b59c89;
 }
 
 .activeNav:hover {
