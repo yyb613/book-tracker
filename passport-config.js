@@ -5,7 +5,9 @@ const db = require ('./config/connection')
 
 function initialize(passport, getUserByEmail) {
     const authenticateUser = async (email, password, done) => {
-        const user = db.query(`SELECT * FROM users WHERE email = ('?')`, email, (err, data) => {
+        const sql = 'SELECT password FROM users WHERE email = (?)'
+        const values = email
+        const user = db.query(sql, email, (err, res) => {
             if (err) throw (err);
           })
         const hashedPassword = await bcrypt.hash(password, 10)
