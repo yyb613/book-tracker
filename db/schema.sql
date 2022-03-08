@@ -3,8 +3,8 @@ CREATE DATABASE my_library_db;
 
 USE my_library_db;
 
-CREATE TABLE `Users` (
-    `ID` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+CREATE TABLE `users` (
+    `Id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `username` VARCHAR(50) NOT NULL ,
     `email` VARCHAR(40) NOT NULL,
     `password` VARCHAR(50) NOT NULL
@@ -13,7 +13,7 @@ CREATE TABLE `Users` (
 CREATE TABLE `personalLibrary` (
     `userId` INT NOT NULL,
     `bookId` INT NOT NULL
-)
+);
 
 CREATE TABLE `AddedBook` (
     `ID` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,

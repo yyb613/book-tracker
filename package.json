@@ -19,11 +19,15 @@
   },
   "homepage": "https://github.com/rogermle/project-2-starter-template#readme",
   "dependencies": {
+    "bcrypt": "^5.0.1",
+    "connect-flash": "^0.1.1",
     "dotenv": "^16.0.0",
     "express": "^4.17.3",
     "express-handlebars": "^6.0.2",
     "express-session": "^1.17.2",
     "mysql2": "^2.3.3",
+    "passport": "^0.5.2",
+    "passport-local": "^1.0.0",
     "sequelize": "^6.17.0"
   }
 }

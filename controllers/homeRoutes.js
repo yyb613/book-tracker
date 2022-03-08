@@ -1,11 +1,50 @@
 const router = require('express').Router();
 const db = require('../config/connection.js');
+const bcrypt = require('bcrypt');
+const { hash } = require('bcrypt');
 
 // Homepage
 router.get('/', async (req, res) => {
   // Send the rendered Handlebars.js template back as the response
   res.render('homepage');
 });
+
+// Authentication
+
+const users = []
+
+router.get('/login', (req, res) => {
+  res.render('login')
+})
+
+router.get('/register', (req, res) => {
+  res.render('register')
+})
+
+router.post('/login', (req, res) => {
+})
+
+router.post('/register', async (req, res) => {
+  try {
+    const hashedPassword = await bcrypt.hash(req.body.password, 10)
+    const sql = 'INSERT INTO users (username, email, password) VALUES (?)'
+    const values = [ req.body.name, req.body.email, req.body.password ]
+    db.query(sql, [values], (err, data) => {
+      if (err) throw (err);
+    })
+    // users.push({
+    //   id: Date.now().toString(),
+    //   name: req.body.name,
+    //   email: req.body.email,
+    //   password: hashedPassword
+    // })
+    res.redirect('/login')
+  } catch {
+    res.redirect('/register')
+  }
+  console.log(users)
+})
+
 
 // My Library
 router.get('/my_library', async (req, res) => {

@@ -1,0 +1,14 @@
+<form action="/login" method="POST">
+{{#if err}}
+<h1>{{err}}</h1>
+{{/if}}
+<div>
+    <label for="name">Username</label>
+    <input type="name" id="name" name="name" required>
+</div>
+<div>
+    <label for="password">Password</label>
+    <input type="password" id="password" name="password" required>
+</div>
+<button type="submit">Login</button>
+</form>
