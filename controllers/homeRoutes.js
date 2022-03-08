@@ -2,6 +2,11 @@ const router = require('express').Router();
 const db = require('../config/connection.js');
 const bcrypt = require('bcrypt');
 const { hash } = require('bcrypt');
+// require('../passport-config')
+
+const passport = require('passport')
+const LocalStrategy = require('passport-local').Strategy
+    
 
 // Homepage
 router.get('/', async (req, res) => {
@@ -21,23 +26,20 @@ router.get('/register', (req, res) => {
   res.render('register')
 })
 
-router.post('/login', (req, res) => {
-})
+router.post('/login', passport.authenticate('local', {
+  successRedirect: '/my_library',
+  failureRedirect: '/login',
+  failureFlash: true
+}))
 
 router.post('/register', async (req, res) => {
   try {
     const hashedPassword = await bcrypt.hash(req.body.password, 10)
     const sql = 'INSERT INTO users (username, email, password) VALUES (?)'
-    const values = [ req.body.name, req.body.email, req.body.password ]
+    const values = [ req.body.name, req.body.email, hashedPassword ]
     db.query(sql, [values], (err, data) => {
       if (err) throw (err);
     })
-    // users.push({
-    //   id: Date.now().toString(),
-    //   name: req.body.name,
-    //   email: req.body.email,
-    //   password: hashedPassword
-    // })
     res.redirect('/login')
   } catch {
     res.redirect('/register')
