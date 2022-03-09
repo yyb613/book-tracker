@@ -29,7 +29,7 @@ function drop(event) {
     event.preventDefault(); // Prevent Default
     var data = event.dataTransfer.getData("text"); // Receive data
     cardObj = JSON.parse(data); // Parse data
-    cardObj.destination = 'AlreadyRead'; // Add destination table
+    cardObj.destination = 'alreadyread'; // Add destination table
 
     // console.log(cardObj);
     

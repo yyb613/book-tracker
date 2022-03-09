@@ -55,7 +55,7 @@ router.get('/my_library', async (req, res) => {
 });
 
 // Added Books
-router.get('/AddedBook', async (req, res) => {
+router.get('/addedbook', async (req, res) => {
   const sqlString = `
     SELECT coverURL, title, author, numPages
     FROM AddedBook`
@@ -67,7 +67,7 @@ router.get('/AddedBook', async (req, res) => {
 });
 
 // Already Read Books
-router.get('/AlreadyRead', async (req, res) => {
+router.get('/alreadyread', async (req, res) => {
   const sqlString = `
     SELECT coverURL, title, author, numPages
     FROM AlreadyRead`
@@ -79,7 +79,7 @@ router.get('/AlreadyRead', async (req, res) => {
 });
 
 // Currently Reading Books
-router.get('/CurrentlyReading', async (req, res) => {
+router.get('/currentlyreading', async (req, res) => {
   const sqlString = `
     SELECT coverURL, title, author, numPages
     FROM CurrentlyReading`
@@ -91,7 +91,7 @@ router.get('/CurrentlyReading', async (req, res) => {
 });
 
 // Want to Read Books
-router.get('/WantToRead', async (req, res) => {
+router.get('/wanttoread', async (req, res) => {
   const sqlString = `
     SELECT coverURL, title, author, numPages
     FROM WantToRead`
@@ -103,7 +103,7 @@ router.get('/WantToRead', async (req, res) => {
 });
 
 // Drag to Already Read
-router.post('/AlreadyReadDragged', async (req, res) => {
+router.post('/alreadyreadDragged', async (req, res) => {
   const coverURL = req.body.coverURL;
   const title = req.body.title;
   const author = req.body.author;
@@ -120,8 +120,10 @@ router.post('/AlreadyReadDragged', async (req, res) => {
   const sqlString2 = `
     SELECT coverURL, title, author, numPages
     FROM ${origin};`
+
 console.log(sqlString1)
 console.log(sqlString2)
+
   db.query(sqlString1, (err, data) => {
     if (err) throw err; // error handling
 

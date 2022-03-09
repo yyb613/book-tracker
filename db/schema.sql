@@ -1,7 +1,7 @@
-DROP DATABASE IF EXISTS my_library_db;
-CREATE DATABASE my_library_db;
+DROP DATABASE IF EXISTS mvk1xnkwl127awp5;
+CREATE DATABASE mvk1xnkwl127awp5;
 
-USE my_library_db;
+USE mvk1xnkwl127awp5;
 
 CREATE TABLE `users` (
     `Id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
