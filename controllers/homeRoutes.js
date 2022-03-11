@@ -121,8 +121,8 @@ router.post('/alreadyreadDragged', async (req, res) => {
     SELECT coverURL, title, author, numPages
     FROM ${origin};`
 
-console.log(sqlString1)
-console.log(sqlString2)
+  // console.log(sqlString1)
+  // console.log(sqlString2)
 
   db.query(sqlString1, (err, data) => {
     if (err) throw err; // error handling

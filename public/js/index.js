@@ -33,7 +33,7 @@ function drop(event) {
 
     // console.log(cardObj);
     
-    fetch('https://my-book-tracker-app.herokuapp.com/AlreadyReadDragged', {
+    fetch('https://my-book-tracker-app.herokuapp.com/alreadyreadDragged', {
         method: 'POST', 
         headers: {
             'Content-Type': 'application/json'
