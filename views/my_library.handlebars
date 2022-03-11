@@ -12,6 +12,26 @@
   </div>
 </aside>
 
+<form action="/addbook" method="POST">
+  <div>
+    <label for="coverURL">Cover URL</label>
+    <input type="url" id="coverURL" name="coverURL">
+  </div>
+  <div>
+    <label for="title">Title</label>
+    <input type="text" id="title" name="title" required>
+  </div>
+  <div>
+    <label for="author">Author</label>
+    <input type="text" id="author" name="author" required>
+  </div>
+  <div>
+    <label for="numPages">Number of Pages</label>
+    <input type="number" id="numPages" name="numPages" required>
+  </div>
+  <button type="submit">Submit</button>
+</form>
+
 {{!-- cards --}}
 <div class="container-fluid mt-4">
   <div class="row justify-content-center" id="row">

@@ -15,7 +15,6 @@ router.get('/', async (req, res) => {
 });
 
 // Authentication
-
 const users = []
 
 router.get('/login', (req, res) => {
@@ -47,11 +46,24 @@ router.post('/register', async (req, res) => {
   console.log(users)
 })
 
-
 // My Library
 router.get('/my_library', async (req, res) => {
   // Send the rendered Handlebars.js template back as the response
   res.render('my_library');
+});
+
+
+// Add a Book
+router.get('/addbook', async (req, res) => {
+  console.log(res)
+  // const sqlString = `
+  //   INSERT INTO addedbook (coverURL, title, author, numPages)
+  //   VALUES ("${coverURL}", "${title}", "${author}", "${numPages}");`
+
+  // db.query(sqlString, (err, data) => {
+  //   if (err) throw err; // error handling
+  //   res.render('my_library', { books:data }); // render page
+  // });
 });
 
 // Added Books
@@ -62,7 +74,7 @@ router.get('/addedbook', async (req, res) => {
 
   db.query(sqlString, (err, data) => {
     if (err) throw err; // error handling
-    res.render('my_library', {books:data}); // render page
+    res.render('my_library', { books:data }); // render page
   });
 });
 
@@ -74,7 +86,7 @@ router.get('/alreadyread', async (req, res) => {
 
   db.query(sqlString, (err, data) => {
     if (err) throw err; // error handling
-    res.render('my_library', {books:data}); // render page
+    res.render('my_library', { books:data }); // render page
   });
 });
 
@@ -86,7 +98,7 @@ router.get('/currentlyreading', async (req, res) => {
 
   db.query(sqlString, (err, data) => {
     if (err) throw err; // error handling
-    res.render('my_library', {books:data}); // render page
+    res.render('my_library', { books:data }); // render page
   });
 });
 
