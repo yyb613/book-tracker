@@ -7,11 +7,6 @@ $(document).ready(function () {
 });
 
 /* Drag and Drop */
-// Allow Drop
-function allowDrop(event) {
-   event.preventDefault(); // Prevent Default
-}
-
 // Drag
 function drag(event) {
     const cardObj = { // Object with card contents
@@ -24,16 +19,21 @@ function drag(event) {
     event.dataTransfer.setData("text", JSON.stringify(cardObj)); // Transfer object
 }
 
+// Allow Drop
+function allowDrop(event) {
+   event.preventDefault(); // Prevent Default
+}
+
 // Drop to Already Read
-function drop(event) {
+function dropAlready(event) {
     event.preventDefault(); // Prevent Default
     var data = event.dataTransfer.getData("text"); // Receive data
     cardObj = JSON.parse(data); // Parse data
     cardObj.destination = 'alreadyread'; // Add destination table
 
-    // console.log(cardObj);
+    console.log(cardObj);
     
-    fetch('https://my-book-tracker-app.herokuapp.com/alreadyreadDragged', {
+    fetch('/alreadyreadDragged', {
         method: 'POST', 
         headers: {
             'Content-Type': 'application/json'
@@ -41,9 +41,54 @@ function drop(event) {
         body: JSON.stringify(cardObj)
     })
         .then(function (response) {
-        // console.log(response);
+            if(response.ok){
+                location.reload()
+            }
         })
-        // .then(function (data) {
-            
-        // });
+}
+
+// Drop to Currently Reading
+function dropCurrent(event) {
+    event.preventDefault(); // Prevent Default
+    var data = event.dataTransfer.getData("text"); // Receive data
+    cardObj = JSON.parse(data); // Parse data
+    cardObj.destination = 'currentlyreading'; // Add destination table
+
+    console.log(cardObj);
+    
+    fetch('/currentlyDragged', {
+        method: 'POST', 
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(cardObj)
+    })
+        .then(function (response) {
+            if(response.ok){
+                location.reload()
+            }
+        })
+}
+
+// Drop to Want to Read
+function dropWant(event) {
+    event.preventDefault(); // Prevent Default
+    var data = event.dataTransfer.getData("text"); // Receive data
+    cardObj = JSON.parse(data); // Parse data
+    cardObj.destination = 'wanttoread'; // Add destination table
+
+    console.log(cardObj);
+    
+    fetch('/wantDragged', {
+        method: 'POST', 
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(cardObj)
+    })
+        .then(function (response) {
+            if(response.ok){
+                location.reload()
+            }
+        })
 }

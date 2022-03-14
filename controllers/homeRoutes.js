@@ -54,16 +54,24 @@ router.get('/my_library', async (req, res) => {
 
 
 // Add a Book
-router.get('/addbook', async (req, res) => {
-  console.log(res)
-  // const sqlString = `
-  //   INSERT INTO addedbook (coverURL, title, author, numPages)
-  //   VALUES ("${coverURL}", "${title}", "${author}", "${numPages}");`
+router.post('/addbook', async (req, res) => {
+  console.log(req.body)
+  const sqlString = `
+  INSERT INTO addedbook (coverURL, title, author, numPages)
+  VALUES(?, ?, ?, ?);`
 
-  // db.query(sqlString, (err, data) => {
-  //   if (err) throw err; // error handling
-  //   res.render('my_library', { books:data }); // render page
-  // });
+  db.query(sqlString, [req.body.coverURL, req.body.title, req.body.author, req.body.numPages],(err, data) => {
+    if (err) throw err; // error handling
+
+    const sqlStringTwo = `
+    SELECT coverURL, title, author, numPages
+    FROM addedbook`
+
+    db.query(sqlStringTwo, (err, data) => {
+      if (err) throw err; // error handling
+      res.render('my_library', { books: data }); // render page
+    })
+  });
 });
 
 // Added Books
@@ -72,11 +80,11 @@ router.get('/addedbook', async (req, res) => {
     SELECT coverURL, title, author, numPages
     FROM AddedBook`
 
-  db.query(sqlString, (err, data) => {
-    if (err) throw err; // error handling
-    res.render('my_library', { books:data }); // render page
+    db.query(sqlString, (err, data) => {
+      if (err) throw err; // error handling
+      res.render('my_library', { books: data }); // render page
+    })
   });
-});
 
 // Already Read Books
 router.get('/alreadyread', async (req, res) => {
@@ -125,25 +133,97 @@ router.post('/alreadyreadDragged', async (req, res) => {
 
   const sqlString1 = `
     DELETE FROM ${origin}
-    WHERE (coverURL = "${coverURL}" AND ID <> 0);
+    WHERE (title = "${title}");`
+
+  const sqlString2 = `
     INSERT INTO ${destination} (coverURL, title, author, numPages)
     VALUES ("${coverURL}", "${title}", "${author}", "${numPages}");`
 
-  const sqlString2 = `
+  const sqlString3 = `
     SELECT coverURL, title, author, numPages
     FROM ${origin};`
 
-  // console.log(sqlString1)
-  // console.log(sqlString2)
-
-  db.query(sqlString1, (err, data) => {
+  db.query(sqlString1, (err, data) => { // delete from category
     if (err) throw err; // error handling
-
   });
 
-  db.query(sqlString2, (err, data) => {
+  db.query(sqlString2, (err, data) => { // add to category
     if (err) throw err; // error handling
-    res.render('my_library', { books: data }); // refresh page
+  });
+
+  db.query(sqlString3, (err, data) => { // refresh page
+    if (err) throw err; // error handling
+    res.render('my_library', { books: data });
+  });
+});
+
+// Drag to Currently Reading
+router.post('/currentlyDragged', async (req, res) => {
+  const coverURL = req.body.coverURL;
+  const title = req.body.title;
+  const author = req.body.author;
+  const numPages = req.body.numPages;
+  const origin = req.body.origin;
+  const destination = req.body.destination;
+
+  const sqlString1 = `
+    DELETE FROM ${origin}
+    WHERE (title = "${title}");`
+
+  const sqlString2 = `
+    INSERT INTO ${destination} (coverURL, title, author, numPages)
+    VALUES ("${coverURL}", "${title}", "${author}", "${numPages}");`
+
+  const sqlString3 = `
+    SELECT coverURL, title, author, numPages
+    FROM ${origin};`
+
+  db.query(sqlString1, (err, data) => { // delete from category
+    if (err) throw err; // error handling
+  });
+
+  db.query(sqlString2, (err, data) => { // add to category
+    if (err) throw err; // error handling
+  });
+
+  db.query(sqlString3, (err, data) => { // refresh page
+    if (err) throw err; // error handling
+    res.render('my_library', { books: data });
+  });
+});
+
+// Drag to Want to Read
+router.post('/wantDragged', async (req, res) => {
+  const coverURL = req.body.coverURL;
+  const title = req.body.title;
+  const author = req.body.author;
+  const numPages = req.body.numPages;
+  const origin = req.body.origin;
+  const destination = req.body.destination;
+
+  const sqlString1 = `
+    DELETE FROM ${origin}
+    WHERE (title = "${title}");`
+
+  const sqlString2 = `
+    INSERT INTO ${destination} (coverURL, title, author, numPages)
+    VALUES ("${coverURL}", "${title}", "${author}", "${numPages}");`
+
+  const sqlString3 = `
+    SELECT coverURL, title, author, numPages
+    FROM ${origin};`
+
+  db.query(sqlString1, (err, data) => { // delete from category
+    if (err) throw err; // error handling
+  });
+
+  db.query(sqlString2, (err, data) => { // add to category
+    if (err) throw err; // error handling
+  });
+
+  db.query(sqlString3, (err, data) => { // refresh page
+    if (err) throw err; // error handling
+    res.render('my_library', { books: data });
   });
 });
 
