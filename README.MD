@@ -9,7 +9,7 @@ This app is intended for users who want to keep track of their reading goals usi
 ![Screenshot](https://user-images.githubusercontent.com/95882352/158261989-81bf4a97-2ca9-4dd4-94c5-34a826ed14e9.png)
 
 ## Development
-Book Tracker is the submission for the second major project of the Columbia Engineering Coding Bootcamp from the winter of 2022. It is an application that utilizes HTML, CSS, Javascript, Node.JS, Express.js, Handlebars, a Server-Side API, and MySQL. The final product represents the continued learning of three student developers.
+Book Tracker is the submission for the second major project of the Columbia Engineering Coding Bootcamp from the winter of 2022. It is an application that utilizes HTML, CSS, Javascript, Node.JS, Express.js, Handlebars, and MySQL. The final product represents the continued learning of three student developers.
 
 ## Future Development
 - Search for a book
